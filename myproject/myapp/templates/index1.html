@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <h1>WebSocket Connection Example</h1>
+    <button id="sendMessageButton">Send Message</button>
+
+    <script>
+        // Initialize WebSocket connection
+        const socket = new WebSocket('ws://localhost:8765/ws/some_path/');
+
+        socket.onopen = function(event) {
+            console.log('WebSocket connection established');
+        };
+
+        socket.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            console.log('Message from server:', data.message);
+        };
+
+        socket.onclose = function(event) {
+            console.log('WebSocket connection closed');
+        };
+
+        // Function to send a message to the server
+        document.getElementById('sendMessageButton').onclick = function() {
+            const message = "Hello, Server!";
+            socket.send(JSON.stringify({ 'message': message }));
+        };
+    </script>
+</body>
+</html>
