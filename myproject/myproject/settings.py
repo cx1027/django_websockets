@@ -122,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Use Redis as the message broker
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'

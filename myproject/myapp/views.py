@@ -7,4 +7,5 @@ from .client_script import hello
 
 def trigger_websocket(request):
     asyncio.run(hello())
-    return JsonResponse({"status": "WebSocket connection initiated"})
+    # return JsonResponse({"status": "WebSocket connection initiated"})
+    return render(request, 'index1.html')
